@@ -6,6 +6,7 @@ import handleMovement from "./movement";
 
 const Player = () => {
   const position = useSelector(state => state.player.position)
+  const spriteLocation = useSelector(state => state.player.spriteLocation);
 
   useEffect(() => {
     handleMovement()
@@ -18,7 +19,7 @@ const Player = () => {
         top: position[1],
         left: position[0],
         backgroundImage: `url('${walkSprite}')`,
-        backgroundPosition: "0 0",
+        backgroundPosition: spriteLocation,
         width: "40px",
         height: "40px"
       }}

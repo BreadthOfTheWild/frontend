@@ -1,0 +1,26 @@
+.tile {
+    display: inline-flex;
+}
+
+.row {
+    margin: 0;
+    background-color: green;
+}
+
+.grass {
+    background-color: green;
+}
+
+.rock {
+    background-image: url('/tiles/rock.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.tree {
+    background-image: url('/tiles/tree.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
