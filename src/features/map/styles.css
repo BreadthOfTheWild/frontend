@@ -12,14 +12,28 @@
 }
 
 .rock {
-    background-image: url('/tiles/rock.png');
+    background-image: url('/tiles/rock-1.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-.tree {
-    background-image: url('/tiles/tree.png');
+.tree-1 {
+    background-image: url('/tiles/tree-1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.bush-1 {
+    background-image: url('/tiles/bush-1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.bush-2 {
+    background-image: url('/tiles/bush-2.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

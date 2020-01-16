@@ -11,15 +11,15 @@ function getTileSprite(type) {
     case 0:
       return 'grass'
     case 3:
-      return 'tree'
+      return 'bush-2'
     case 4:
       return 'chest'
     case 5:
       return 'rock'
     case 6:
-      return 'tree'
+      return 'tree-1'
     case 7:
-      return 'wall'
+      return 'bush-1'
   }
 }
 
