@@ -1,13 +1,16 @@
 import store from "../../config/store";
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from "../../config/constants";
 
+// Logic For Character Movment
 export default function handleMovement(player) {
 
+  // Prevents Character From Moving Off Of the Map
   function observeBoundries(oldPos, newPos) {
     return (newPos[0] >= 0 && newPos[0] <= MAP_WIDTH - SPRITE_SIZE) &&
            (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE)
   }
 
+  // Prevents Character From Moving Over A Blocking Tile (Rocks, Walls, Etc)
   function observeSolidObjects(oldPos, newPos) {
     const tiles = store.getState().map.tiles
 
@@ -19,6 +22,7 @@ export default function handleMovement(player) {
     return nextTile < 5
   }
 
+  // Dispatches Movement Data and Iterates Walk Animation via walkIndex
   function dispatchMove(direction, newPos) {
     const walkIndex = getWalkIndex()
 
@@ -30,9 +34,12 @@ export default function handleMovement(player) {
         walkIndex,
         spriteLocation: getSpriteLocation(direction, walkIndex),
       }
+
     });
   }
 
+  // Calculates New Position Co Ordinates Based On Direction
+  // Direction comes From Key Press
   function getNewPosition(oldPos, direction) {
     switch (direction) {
       case "WEST":
@@ -46,6 +53,8 @@ export default function handleMovement(player) {
     }
   }
 
+  // Determines Which Sprite From Sprite Cheet To Use
+  // Direction comes From Key Press
   function getSpriteLocation(direction, walkIndex) {
     switch(direction) {
       case 'EAST':
@@ -59,21 +68,27 @@ export default function handleMovement(player) {
     }
   }
 
+  // Iterates Walk Index
+  // Walk Index Used To Find Sprite On Sprite Sheet
   function getWalkIndex() {
     const walkIndex = store.getState().player.walkIndex
 
     return walkIndex >= 7 ? 0 : walkIndex + 1
   }
 
+  // Attempts To Move Character
   function attemptMove(direction) {
     const oldPos = store.getState().player.position;
     const newPos = getNewPosition(oldPos, direction);
 
+    // If Character Is Within The Map and Not Hitting A Solid Object
     if(observeBoundries(oldPos, newPos) && observeSolidObjects(oldPos, newPos)) {
+      // Dispatch Move To Redux Store
       dispatchMove(direction, newPos)
     }
   }
 
+  // Converts Key Press To Direction
   function handleKeyDown(e) {
     e.preventDefault();
 
@@ -91,6 +106,7 @@ export default function handleMovement(player) {
     }
   }
 
+  // Attaches Listener For Key Presses
   window.addEventListener("keydown", e => {
     handleKeyDown(e);
   });
