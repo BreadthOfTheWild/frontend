@@ -4,11 +4,11 @@
 
 .row {
     margin: 0;
-    background-color: green;
+    background-color: #42b842;
 }
 
 .grass {
-    background-color: green;
+    background-color: #42b842;
 }
 
 .rock {
@@ -20,6 +20,13 @@
 
 .tree {
     background-image: url('/tiles/tree.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.chest {
+    background-image: url('/tiles/chest.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

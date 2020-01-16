@@ -2,8 +2,8 @@ import store from "../../config/store";
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from "../../config/constants";
 
 export default function handleMovement(player) {
+
   function observeBoundries(oldPos, newPos) {
-    // console.log(newPos)
     return (newPos[0] >= 0 && newPos[0] <= MAP_WIDTH - SPRITE_SIZE) &&
            (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE)
   }
@@ -13,7 +13,7 @@ export default function handleMovement(player) {
 
     const y = newPos[1] / SPRITE_SIZE
     const x = newPos[0] / SPRITE_SIZE
-    // console.log(tiles)
+   
     const nextTile = tiles[y][x]
 
     return nextTile < 5
@@ -34,7 +34,6 @@ export default function handleMovement(player) {
   }
 
   function getNewPosition(oldPos, direction) {
-
     switch (direction) {
       case "WEST":
         return [oldPos[0] - SPRITE_SIZE, oldPos[1]];
@@ -45,20 +44,16 @@ export default function handleMovement(player) {
       case "SOUTH":
         return [oldPos[0], oldPos[1] + SPRITE_SIZE];
     }
-
   }
 
   function getSpriteLocation(direction, walkIndex) {
     switch(direction) {
       case 'EAST':
         return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*1}px`
-
       case 'SOUTH':
         return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*0}px`
-
       case 'WEST':
         return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*2}px`
-
       case 'NORTH':
         return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*3}px`
     }
