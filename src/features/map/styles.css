@@ -1,0 +1,33 @@
+.tile {
+    display: inline-flex;
+}
+
+.row {
+    margin: 0;
+    background-color: #42b842;
+}
+
+.grass {
+    background-color: #42b842;
+}
+
+.rock {
+    background-image: url('/tiles/rock.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.tree {
+    background-image: url('/tiles/tree.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.chest {
+    background-image: url('/tiles/chest.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
