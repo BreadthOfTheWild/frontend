@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'; //<-- useSelector replace map state to props and connect
 import { SPRITE_SIZE } from '../../config/constants';
 
 import './styles.css';
@@ -18,6 +18,8 @@ function getTileSprite(type) {
       return 'rock'
     case 6:
       return 'tree'
+    case 7:
+      return 'wall'
   }
 }
 
@@ -39,7 +41,7 @@ function MapRow(props) {
 
 const Map = () => {
   // 2 Dimensional Map Matrix [[y, x]]
-  const tiles = useSelector(state => state.map.tiles)
+  const tiles = useSelector(state => state.map.tiles) //<-- grabs data from redux store and saves it in variable
 
   return (
     <div
