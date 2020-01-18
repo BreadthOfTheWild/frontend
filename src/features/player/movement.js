@@ -19,7 +19,7 @@ export default function handleMovement(player) {
    
     const nextTile = tiles[y][x]
 
-    return nextTile < 5
+    return nextTile.value < 5
   }
 
   // Dispatches Movement Data and Iterates Walk Animation via walkIndex
@@ -95,12 +95,24 @@ export default function handleMovement(player) {
     switch (e.keyCode) {
       case 37:
         return attemptMove("WEST");
+      case 65:
+        return attemptMove("WEST");
+
       case 38:
+        return attemptMove("NORTH");        
+      case 87:
         return attemptMove("NORTH");
+
       case 39:
         return attemptMove("EAST");
+      case 68:
+        return attemptMove("EAST");
+
       case 40:
         return attemptMove("SOUTH");
+      case 83:
+        return attemptMove("SOUTH");
+        
       default:
         console.log(e.keyCode);
     }
