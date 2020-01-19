@@ -31,19 +31,6 @@ const dummyRoom = {
     "west": true
 }
 
-// [
-//     [ 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6 ],
-//     [ 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 4, 0, 0, 0, 7, 6, 0, 0 ],
-//     [ 6, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 6, 7, 7, 3, 7, 7, 6, 0, 0 ],
-//     [ 6, 6, 0, 0, 0, 0, 5, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0 ],
-//     [ 6, 5, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0 ],
-//     [ 6, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 0, 6, 0, 0 ],
-//     [ 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 0, 0, 0, 0, 6, 0, 0 ],
-//     [ 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0 ],
-//     [ 5, 0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 6, 0, 0 ],
-//     [ 5, 0, 0, 5, 5, 5, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 5, 5, 5, 0 ],
-// ] 
-
 class Cell {
     constructor(coords) {
         this.coords = coords; // [ row, column ]
@@ -77,10 +64,27 @@ function generateTiles(room) {
 
     populateNeightbors(tiles);
 
-    const startCell = tiles[1][1]
-    // console.log(startCell)
+    let startCell = tiles[1][1]
     generateMaze(startCell);
-    /// console.log(tiles)
+
+    startCell = tiles[8][1]
+    generateMaze(startCell)
+
+    startCell = tiles[8][18]
+    generateMaze(startCell)
+
+    startCell = tiles[1][18]
+    generateMaze(startCell)
+
+    startCell = tiles[4][1]
+    generateMaze(startCell)
+
+    startCell = tiles[4][9]
+    generateMaze(startCell)
+
+    startCell = tiles[4][18]
+    generateMaze(startCell)
+
     return tiles;
 }
 
@@ -113,9 +117,6 @@ function populateNeightbors(tiles) {
 }
 
 function generateMaze(start) {
-    console.log('called')
-    // given a cell ( start )
-    console.log('start', start)
     // mark current cell as visted
     if( !start ) return;
 
@@ -130,13 +131,11 @@ function generateMaze(start) {
         east: false,
         west: false,
     }
-    console.log('checked',checked)
 
     while(!checked.north && !checked.east && !checked.west && !checked.south) {
         // Choose one neighbor
-        console.log('while:')
         let index = Math.floor( Math.random() * 3 ) + 1
-        console.log('\tindex:', index);
+
         switch(index) {
             case 0: 
                 checked.north = true
@@ -154,139 +153,14 @@ function generateMaze(start) {
                 checked.east = true
                 break;
         }
-        console.log('\tchecked:', checked)
 
-        // Make A Path
-        console.log(index, start.neighbors[ index ])
-        if( start.neighbors[ index ] && !start.neighbors[ index ].visited ) {
-            console.log('if 1')
-            // Move to new cell recursively 
+        // Move new cell recursively
+        if( start.neighbors[ index ] ) {
             generateMaze(start.neighbors[ index ])
         } else {
-            console.log('else 1')
-            if( index === 0 && start.neighbors[ 3 ] ) {
-                console.log('if 2')
-                generateMaze(start[3])
-            } else {
-                console.log('else 2')
-                generateMaze(start[ 2 ])
-            }
+            continue;
         }
     }
-
-
-
-
-
-    // if( start.visited ) return;
-
-    // start.visited = true;
-    // start.value = 5;
-    
-    // let next = start;
-
-    // const checked = {
-    //     north: false,
-    //     south: false,
-    //     east: false,
-    //     west: false,
-    // }
-
-    // let index = Math.floor( Math.random() * 3 ) + 1
-
-    // while( next === start ) {
-
-    //     if( start.neighbors[ index ] && !start.neighbors[ index ].visited ) {
-    //         next = start.neighbors[ index ]
-    //     }
-        // } else {
-        //     console.log('indexL:', index)
-        //     switch(index) {
-        //         case 0: 
-        //             checked.north = true
-        //             break;
-
-        //         case 1:
-        //             checked.west = true
-        //             break;
-
-        //         case 2:
-        //             checked.south = true
-        //             break;
-
-        //         case 3:
-        //             checked.east = true
-        //             break;
-        //     }
-
-        //     console.log('CHECKED: ', checked)
-
-        //     if( checked.north && checked.west && checked.south && checked.east ) {
-        //         break;
-        //     }
-        // }
-    // }
-
-     // console.log('NEXT: ', next)
-    // generateMaze(next)
-
-    //  if(start.visited) { return }
-
-    // let current = start
-
-    // while(!current.visited) {
-       
-
-    //     current.visited = true;
-    //     current.value = 5
-    //     console.log(current)
-    //     const index = Math.floor( Math.random() * 3 ) + 1
-    //     let next = current
-
-    //     if(current.neighbors[index]) {
-    //         next = current.neighbors[index]
-    //     }
-            
-    //     generateMaze(next)
-    // }
-
-    // for(let i = 1; i < 9; i++) {
-    //     for(let j = 1; j < 19; j++) {
-            
-    //     }
-    // }
 }
 
 export const tiles = generateTiles(dummyRoom);
-
-        // let blockCount = 0;
-
-        // for(let j = 0; j < 20; j++) {
-        //     const tileOptions = [ 0, 5, 6, 7 ]
-
-        //     if( (!room.north && i === 0) || (!room.south && i === 9) ) {
-
-        //         tiles[i].push( 6 )
-
-        //     } else {
-    
-        //         if( (!room.east && j === 0) || (!room.west && j === 19) ) {
-        //             tiles[i].push( 6 )
-
-        //         } else {
-        //             let selection = Math.floor( Math.random() * ((tileOptions.length-1) - 0) + 0 )
-
-        //             if(blockCount < 4 && selection > 0) {
-        //                 selection = 0
-
-        //                 tiles[i].push( tileOptions[selection] )
-        //                 blockCount++
-        //             }  else {
-        //                 const selection = Math.floor( Math.random() * ((3-1) - 0) + 0 )
-        //                 //selection = 0
-
-        //                 tiles[i].push( tileOptions[selection] )
-        //             }
-        //         }
-        //     }
-        // }
