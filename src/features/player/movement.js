@@ -19,7 +19,7 @@ export default function handleMovement(player) {
    
     const nextTile = tiles[y][x]
 
-    return nextTile < 5
+    return nextTile.value < 5
   }
 
   // Dispatches Movement Data and Iterates Walk Animation via walkIndex

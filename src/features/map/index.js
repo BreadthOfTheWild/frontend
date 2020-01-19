@@ -33,7 +33,7 @@ function MapRow(props) {
   return (
     <div className='row' style={{ height: SPRITE_SIZE }}>
       {
-        props.tiles.map( tile => <MapTile key={Math.random()} value={tile} /> )
+        props.tiles.map( tile => <MapTile key={Math.random()} value={tile.value} /> )
       }
     </div>
   )
