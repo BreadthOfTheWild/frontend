@@ -3,6 +3,10 @@ import React from "react";
 import { useSelector } from 'react-redux'; //<-- useSelector replace map state to props and connect
 import { SPRITE_SIZE } from '../../config/constants';
 
+// semanic-ui-react breaks layout, adds another tile to bottom left
+import {Container, Segment} from 'semantic-ui-react';
+
+
 import './styles.css';
 
 // Tile Type Value Pulled From Tiles (Map Matrix), and returns class for corresponding tile
@@ -25,6 +29,7 @@ function getTileSprite(type) {
 
 // Generates Individual Map Tile
 function MapTile(props) {
+  // return <div className={`tile ${getTileSprite(props.value)}`} style={{ height: SPRITE_SIZE, width: SPRITE_SIZE }} />
   return <div className={`tile ${getTileSprite(props.value)}`} style={{ height: SPRITE_SIZE, width: SPRITE_SIZE }} />
 }
 

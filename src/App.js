@@ -2,7 +2,7 @@ import React from "react";
 import World from "./features/world";
 
 const App = () => (
-  <div>
+  <div style ={{boxSizing: "border-box"}}>
     <World />
   </div>
 )
