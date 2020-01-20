@@ -25,7 +25,7 @@ export default function handleMovement(player) {
   // Dispatches Movement Data and Iterates Walk Animation via walkIndex
   function dispatchMove(direction, newPos) {
     const walkIndex = getWalkIndex()
-
+   
     store.dispatch({
       type: "MOVE_PLAYER",
       payload: {
@@ -76,6 +76,29 @@ export default function handleMovement(player) {
     return walkIndex >= 7 ? 0 : walkIndex + 1
   }
 
+  // Transitions Sprite To Opposite Side Of Board
+  function transition(oldPos, direction) {
+    if(direction === 'WEST' || direction === 'EAST') {
+
+      if(!oldPos[0] > 0) {
+        return [ 760, oldPos[1] ]
+      } 
+      else if(!oldPos[0] < MAP_WIDTH - SPRITE_SIZE) {
+       return [ 0, oldPos[1] ]
+      }
+
+    } else {
+
+      if(!oldPos[1] > 0) {
+        return [ oldPos[0], 360 ]
+      } 
+      else if(!oldPos[1] < MAP_HEIGHT - SPRITE_SIZE) {
+       return [ oldPos[0], 0 ]
+      }
+
+    }
+  }
+
   // Attempts To Move Character
   function attemptMove(direction) {
     const oldPos = store.getState().player.position;
@@ -85,6 +108,11 @@ export default function handleMovement(player) {
     if(observeBoundries(oldPos, newPos) && observeSolidObjects(oldPos, newPos)) {
       // Dispatch Move To Redux Store
       dispatchMove(direction, newPos)
+
+    } else if(!observeBoundries(oldPos, newPos)) {
+      const transitionPos = transition(oldPos, direction);
+
+      dispatchMove(direction, transitionPos)
     }
   }
 
