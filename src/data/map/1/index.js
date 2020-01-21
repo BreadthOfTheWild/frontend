@@ -1,36 +1,33 @@
-// Matrix Representation of Map
-
-const dummyRoom = {
-    "uuid": "c8bc051c-a61d-4074-a182-7486e1eb0ecb", 
-    "name": "trip4077", 
-    "title": "Outside Cave Entrance", 
-    "description": "North of you, the cave mount beckons", 
-    "players": [
-            "dean1233442", "akaneleimo", "irving", "wisdomtooth", "lowell", 
-            "Fixmylife", "hellome", "brady", "mb", "marinatest", "bnsyoyoyo", 
-            "newuser2", "rodeantest99111", "mb1", "testuser45654", "juliejonak", 
-            "juliejonak10", "TomTom", "nnenna", "9999", "jessejames", "test1", "logan", 
-            "litpapi", "testuser3", "hithereperson", "austinnnnn", "testuser12", 
-            "theblueman", "testuser15", "testuser2", "testuser111", 
-            "user2", "test5", "tyeshi777", "ilovelambda", "billclinton", "Enoka", "testtest", 
-            "lowellism", "kevin", "arronm", "testuser25", "veritaem", "testbob1", "pcghost", "boombox", 
-            "guestuser", "Lambda", "test.test", "Hog", "erik12456", "jimjones", "jjerlich155", "ptdptd2", "Peter", "bojack", 
-            "harambe1234", "tester", "veritaem1", "ptdptd9", "cookiesaregood", "testingtester", "ptd", "test123", "User6", "newben", 
-            "doncherry1", "oye", "testuser10232303011", "christian123", "Jon", "testuserwut", "pierre", "teamzoomers", "testusersss", 
-            "pc", "franknobilo", "user1234", "PeterJacobStoner", "ejaona", "team14", "doncherry3", "noblyn", "matt", "dandan", "tomi", 
-            "ThomasTuttle", "David", "Nab", "bcon", "ghfghdf", "sdgdfg", "gsdfgsfdgssdfg", "victor123test", "sfdghdfg", "yusuf", "fsgsdfa", 
-            "billybobdjango", "hfghfgjkl", "sdghsdfhgase", "kfuyjddf", "fdgdfg", "fghsdgfhs", "JacobStoner", "dam", "kobetesting", "testingpurposes", 
-            "LambdaS", "testing1232456", "Azra", "dano1", "billyjoeldjango", "roryc", "jacksparrow", "ReedNewUser", "omars", "foobars", "victor082", 
-            "steven122185", "loserfacebob", "ReedNewUser321", "jason", "fairgame", "jtonna324", "icarly", "fakertest", "cjbtantay", "FuckThisShit", "azrap", 
-            "azrapanj", "np", "pickles2", "testuser123", "mike123", "eli12321132", "kevinsims21", "sammie", "user1111", "ksims21", "jamesbond123", "admincs24", 
-            "scottydo22"
-      ],
-    "north": true,
-    "south": true,
-    "east": true,
-    "west": true
-}
-
+// const dummyRoom = {
+//     "uuid": "c8bc051c-a61d-4074-a182-7486e1eb0ecb", 
+//     "name": "trip4077", 
+//     "title": "Outside Cave Entrance", 
+//     "description": "North of you, the cave mount beckons", 
+//     "players": [
+//             "dean1233442", "akaneleimo", "irving", "wisdomtooth", "lowell", 
+//             "Fixmylife", "hellome", "brady", "mb", "marinatest", "bnsyoyoyo", 
+//             "newuser2", "rodeantest99111", "mb1", "testuser45654", "juliejonak", 
+//             "juliejonak10", "TomTom", "nnenna", "9999", "jessejames", "test1", "logan", 
+//             "litpapi", "testuser3", "hithereperson", "austinnnnn", "testuser12", 
+//             "theblueman", "testuser15", "testuser2", "testuser111", 
+//             "user2", "test5", "tyeshi777", "ilovelambda", "billclinton", "Enoka", "testtest", 
+//             "lowellism", "kevin", "arronm", "testuser25", "veritaem", "testbob1", "pcghost", "boombox", 
+//             "guestuser", "Lambda", "test.test", "Hog", "erik12456", "jimjones", "jjerlich155", "ptdptd2", "Peter", "bojack", 
+//             "harambe1234", "tester", "veritaem1", "ptdptd9", "cookiesaregood", "testingtester", "ptd", "test123", "User6", "newben", 
+//             "doncherry1", "oye", "testuser10232303011", "christian123", "Jon", "testuserwut", "pierre", "teamzoomers", "testusersss", 
+//             "pc", "franknobilo", "user1234", "PeterJacobStoner", "ejaona", "team14", "doncherry3", "noblyn", "matt", "dandan", "tomi", 
+//             "ThomasTuttle", "David", "Nab", "bcon", "ghfghdf", "sdgdfg", "gsdfgsfdgssdfg", "victor123test", "sfdghdfg", "yusuf", "fsgsdfa", 
+//             "billybobdjango", "hfghfgjkl", "sdghsdfhgase", "kfuyjddf", "fdgdfg", "fghsdgfhs", "JacobStoner", "dam", "kobetesting", "testingpurposes", 
+//             "LambdaS", "testing1232456", "Azra", "dano1", "billyjoeldjango", "roryc", "jacksparrow", "ReedNewUser", "omars", "foobars", "victor082", 
+//             "steven122185", "loserfacebob", "ReedNewUser321", "jason", "fairgame", "jtonna324", "icarly", "fakertest", "cjbtantay", "FuckThisShit", "azrap", 
+//             "azrapanj", "np", "pickles2", "testuser123", "mike123", "eli12321132", "kevinsims21", "sammie", "user1111", "ksims21", "jamesbond123", "admincs24", 
+//             "scottydo22"
+//       ],
+//     "north": true,
+//     "south": true,
+//     "east": true,
+//     "west": true
+// }
 class Cell {
     constructor(coords) {
         this.coords = coords; // [ row, column ]
@@ -42,6 +39,13 @@ class Cell {
 }
 
 function generateTiles(room) {
+    console.log('TILES', room);
+
+    room.north = (room.description.includes('north') || room.description.includes('North'));
+    room.east = (room.description.includes('east') || room.description.includes('East'));
+    room.south = (room.description.includes('south') || room.description.includes('South'));
+    room.west = (room.description.includes('west') || room.description.includes('West'));
+
     const tiles = []
 
     for(let i = 0; i < 10; i++) {
@@ -163,4 +167,4 @@ function generateMaze(start) {
     }
 }
 
-export const tiles = generateTiles(dummyRoom);
+export { generateTiles };
