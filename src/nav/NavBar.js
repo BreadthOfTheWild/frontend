@@ -40,7 +40,8 @@ const NavBar = () => {
                     <Dropdown text = 'Player Info' button>    
                         <Dropdown.Menu>
                         <Menu.Item as='a' active>
-                        Home
+                            <NavLink to = '/ '>Home</NavLink>
+                        
                         </Menu.Item>
                         <Menu.Item as='a'>Active Players</Menu.Item>
                         <Menu.Item as='a'>All Players</Menu.Item>
@@ -49,8 +50,7 @@ const NavBar = () => {
                         </Dropdown.Menu>
                     </Dropdown>
                     <Button style = {{backgroundColor: '#ffcc00'}}>
-                        About
-
+                        <NavLink to = '/about' >About</NavLink>
                     </Button>
 
                 </NavDiv>
