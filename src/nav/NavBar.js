@@ -1,96 +1,97 @@
 import React, {useState} from "react";
-import World from "./features/world";
+import World from "../features/world";
 
-import AboutTemp from './about_temp/AboutTemp'
-import LandingTemp from './landing_temp/LandingTemp';
+import AboutTemp from '../about_temp/AboutTemp'
+import LandingTemp from '../landing_temp/LandingTemp';
 
 import {Route, NavLink, Switch} from 'react-router-dom';
-import {Dropdown, Menu, Segment} from 'semantic-ui-react';
-// import './nav.css';
+import {Button, Dropdown, Label, Menu, Segment} from 'semantic-ui-react';
+import './nav.css';
+
+import {
+    BannerDiv,
+    NavDiv
+} from '../styledComp/StyledComp';
 
 
 const NavBar = () => {
-
-    const [isActive, setIsActive] = useState(false, "isActive State");
+    const [fixed, setFixedMenu] = useState(true);
 
     return (
-        <Segment>
-            <Menu>
-            <Menu.Item>
-                <NavLink to = '/' exact> Home </NavLink> 
-            </Menu.Item>
-            <Menu.Item>
-                <NavLink to = '/about' exact> About </NavLink> 
-            </Menu.Item>
-            <Menu.Item>
-                <NavLink to = '/Login' exact> Login </NavLink>
-            </Menu.Item>
-            <Menu.Item>
-                <NavLink to = '/world'> World </NavLink>   
-            </Menu.Item>
+        <div>
+            
+            <Menu
+                fixed={fixed ? 'top' : null}
+                inverted={!fixed}
+                pointing={!fixed}
+                secondary={!fixed}
+                size='large'
+                position = 'right'
+            >
+                <BannerDiv> Djungle Maze</BannerDiv>
+                <NavDiv>
+                    <Button style = {{backgroundColor: '#00b377'}}>
+                        Log in
+                    </Button>
+                    <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em', marginRight: '5.5em' }}>
+                        Sign Up
+                    </Button>
+                    
+                    <Dropdown text = 'Player Info' button>    
+                        <Dropdown.Menu>
+                        <Menu.Item as='a' active>
+                        Home
+                        </Menu.Item>
+                        <Menu.Item as='a'>Active Players</Menu.Item>
+                        <Menu.Item as='a'>All Players</Menu.Item>
+                        <Menu.Item position='right'>
+                        </Menu.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    <Button style = {{backgroundColor: '#ffcc00'}}>
+                        About
 
-        
-        
-            <Menu.Menu position = 'right'>
-                <Dropdown>
-                    <Dropdown.Menu>
-                        <Dropdown.Item>
-                            <NavLink to = '/' exact> Home </NavLink> 
-                        </Dropdown.Item>
-                    <Dropdown.Item>
-                        <NavLink to = '/about' exact> About </NavLink>
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <NavLink to = '/world'> World </NavLink>   
-                    </Dropdown.Item>
-                
-                    </Dropdown.Menu>
-                {/*
-                    <div style = {{display: 'flex', zIndex: '0', flexDirection: 'column'}}>
-                    <NavLink to = '/login' exact> Login </NavLink>  
-                    </div>
-                */}                                    
-                </Dropdown>
-            </Menu.Menu>
-        </Menu>
-    
+                    </Button>
+
+                </NavDiv>
+            </Menu>            
 
 
         
-        <Route
-            exact path = '/' 
-            render = { (props) => <LandingTemp {...props} landingProp = {` the Landing Page`} />}
-        />
+            <Route
+                exact path = '/' 
+                render = { (props) => <LandingTemp {...props} landingProp = {` the Landing Page`} />}
+            />
 
-        <Route
-            exact path = '/about' 
-            render = { (props) => 
-            <AboutTemp 
-                {...props} 
-                aboutProp = {` the About Page`} 
-            />}
-        />
-
-    {/*    
-        <Route
-            exact path = 'login' 
-            render = { (props) => 
-                <Login 
-                {...props} 
-
-                LoginProp = {` the Login Page`} 
+            <Route
+                exact path = '/about' 
+                render = { (props) => 
+                <AboutTemp 
+                    {...props} 
+                    aboutProp = {` the About Page`} 
                 />}
-        />
-    */}            
-        <Route
-            exact path = '/world' 
-            render = { (props) => 
-            <World 
-                {...props} 
-                worldProp = {` the World Page`} 
-            />}
-        />
-        </Segment>
+            />
+
+        {/*    
+            <Route
+                exact path = 'login' 
+                render = { (props) => 
+                    <Login 
+                    {...props} 
+
+                    LoginProp = {` the Login Page`} 
+                    />}
+            />
+        */}            
+            <Route
+                exact path = '/world' 
+                render = { (props) => 
+                <World 
+                    {...props} 
+                    worldProp = {` the World Page`} 
+                />}
+            />        
+        </div>
     )
 
 

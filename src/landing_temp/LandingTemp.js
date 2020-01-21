@@ -1,18 +1,22 @@
 import React from 'react';
 import {Button, Container, Segment} from 'semantic-ui-react';
 
+
+
+
+
+
+
+
 const LandingTemp = (props) => {
     return (
-        <Segment>
-            <Container style = {{border: '1px solid blue'}}>
+            <div style = {{color: 'ghostwhite', marginTop: '70px'}}>
                 <h3> {props.landing_temp_title}</h3>
-                    <Container >
+                    <p >
                         Temp Landing Page
-                    </Container>
-            
-            
-            </Container>
-        </Segment>
+                    </p>
+
+            </div>
     )
 
 
