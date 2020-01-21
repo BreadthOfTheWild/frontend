@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import World from "../features/world";
 
-import AboutTemp from '../about_temp/AboutTemp'
-import LandingTemp from '../landing_temp/LandingTemp';
+import AboutPage from '../about_temp/AboutPage'
+import LandingPage from '../landing/LandingPage';
 
 import {Route, NavLink, Switch} from 'react-router-dom';
 import {Button, Dropdown, Label, Menu, Segment} from 'semantic-ui-react';
@@ -64,13 +64,13 @@ const NavBar = () => {
         
             <Route
                 exact path = '/' 
-                render = { (props) => <LandingTemp {...props} landingProp = {` the Landing Page`} />}
+                render = { (props) => <LandingPage {...props} landingProp = {` the Landing Page`} />}
             />
 
             <Route
                 exact path = '/about' 
                 render = { (props) => 
-                <AboutTemp 
+                <AboutPage 
                     {...props} 
                     aboutProp = {` the About Page`} 
                 />}

@@ -3,7 +3,7 @@ import World from "./features/world";
 import jungle from './content/background_jungle_01.png';
 import NavBar from './nav/NavBar';
 
-import LandingTemp from './landing_temp/LandingTemp';
+import LandingTemp from './landing/LandingPage';
 
 import {
     MainDiv
