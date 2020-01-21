@@ -2,14 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 import jungle from '../content/background_jungle_01.png';
 
+// font-family: climbing_plantregular;;
+
+// text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 
 const BannerDiv = styled.div`  
-    color: #39ac39;
+    color: #386600;
     fontWeight: bold;
+    font-family: climbing_plantregular;
+    font-family: 'Eater', cursive;
+    text-shadow: -3.5px -3.5px  #DDD, 3.5px -3.5px  #DDD, -3.5px 3.5px  #DDD, 3.5px 3.5px  #DDD;
     width: 50%;
     display: flex;
     font-size: 50px;
-    padding: 20px;
+    padding: 30px;
     text-align: center;
     justify-content: center;
     align-items: center;

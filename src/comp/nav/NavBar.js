@@ -13,7 +13,7 @@ import vines from '../content/vines.jpg';
 import {
     BannerDiv,
     NavDiv
-} from '../../styledComp/StyledComp';
+} from '../styledComp/StyledComp';
 
 
 const NavBar = () => {

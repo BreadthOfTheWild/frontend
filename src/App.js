@@ -5,7 +5,7 @@ import NavBar from './comp/nav/NavBar';
 
 import {
     MainDiv
-} from './styledComp/StyledComp';
+} from './comp/styledComp/StyledComp';
 
 
 const App = () => {
