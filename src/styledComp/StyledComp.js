@@ -4,7 +4,8 @@ import jungle from '../content/background_jungle_01.png';
 
 
 const BannerDiv = styled.div`  
-    
+    color: #39ac39;
+    fontWeight: bold;
     width: 50%;
     display: flex;
     font-size: 50px;
@@ -28,8 +29,8 @@ const MainDiv = styled.div`
     marginTop: 70px;
     background-image: url(${jungle});
     background-position: center;
-    backgroundSize: cover;
-    backgroundRepeat: no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 90%;
     margin: 5px auto;
     position: absolute;

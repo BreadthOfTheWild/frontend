@@ -3,11 +3,6 @@ import {Button, Container, Image, Segment} from 'semantic-ui-react';
 
 import game from '../content/Landing_GamePlay.png';
 
-
-
-
-
-
 const LandingTemp = (props) => {
     return (
             <div style = {{padding: '20px', color: 'ghostwhite', display: 'flex', flexDirection: 'column', marginTop: '70px'}}>
@@ -27,13 +22,6 @@ const LandingTemp = (props) => {
                     </div>
             </div>
     )
-
-
-
-
-
-
-
 }
 
 export default LandingTemp;

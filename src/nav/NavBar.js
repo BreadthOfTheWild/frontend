@@ -7,6 +7,8 @@ import LandingTemp from '../landing_temp/LandingTemp';
 import {Route, NavLink, Switch} from 'react-router-dom';
 import {Button, Dropdown, Label, Menu, Segment} from 'semantic-ui-react';
 import './nav.css';
+import scales from '../content/scales.jpg';
+import vines from '../content/vines.jpg';
 
 import {
     BannerDiv,
@@ -27,22 +29,22 @@ const NavBar = () => {
                 secondary={!fixed}
                 size='large'
                 position = 'right'
-                style = {{backgroundColor: 'seagreen', border: '2px solid #1f2e2e'}}
+                style = {{backgroundImage: `url(${vines})`, border: '2px solid #b3cccc'}}
             >
                 <BannerDiv> Djungle Maze</BannerDiv>
                 <NavDiv>
-                    <Button style = {{backgroundColor: '#00b377', border: '1px solid #1f2e2e'}}>
+                    <Button style = {{backgroundColor: '#00b377', border: '1px solid #b3cccc'}}>
                         Log in
                     </Button>
                     <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em', marginRight: '5.5em', 
-                        border: '1px solid #1f2e2e' }}>
+                        border: '1px solid #b3cccc' }}>
                         Sign Up
                     </Button>
                     
-                    <Dropdown text = 'Player Info' button style = {{border: '1px solid #1f2e2e'}}>    
+                    <Dropdown text = 'Player Info' button style = {{border: '1px solid #b3cccc'}}>    
                         <Dropdown.Menu>
                         <Menu.Item as='a' active>
-                            <NavLink to = '/ '>Home</NavLink>
+                            <NavLink to = '/'>Home</NavLink>
                         
                         </Menu.Item>
                         <Menu.Item as='a'>Active Players</Menu.Item>
@@ -51,7 +53,7 @@ const NavBar = () => {
                         </Menu.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    <Button style = {{backgroundColor: '#ffcc00', border: '1px solid #1f2e2e'}}>
+                    <Button style = {{backgroundColor: '#ffcc00', border: '1px solid #b3cccc'}}>
                         <NavLink to = '/about' >About</NavLink>
                     </Button>
 

@@ -17,7 +17,7 @@ const App = () => {
     return (
         <div style = {{width: '90%', margin: '0 auto'}}>
             <NavBar />
-            <div style = {{marginTop: '70px',
+            <MainDiv style = {{marginTop: '70px',
                 backgroundImage: `url(${jungle})`,
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
@@ -33,7 +33,7 @@ const App = () => {
             }}
             >
 
-            </div>
+            </MainDiv>
         </div>
   );
 }
