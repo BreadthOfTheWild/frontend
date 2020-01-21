@@ -27,17 +27,19 @@ const NavBar = () => {
                 secondary={!fixed}
                 size='large'
                 position = 'right'
+                style = {{backgroundColor: 'seagreen', border: '2px solid #1f2e2e'}}
             >
                 <BannerDiv> Djungle Maze</BannerDiv>
                 <NavDiv>
-                    <Button style = {{backgroundColor: '#00b377'}}>
+                    <Button style = {{backgroundColor: '#00b377', border: '1px solid #1f2e2e'}}>
                         Log in
                     </Button>
-                    <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em', marginRight: '5.5em' }}>
+                    <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em', marginRight: '5.5em', 
+                        border: '1px solid #1f2e2e' }}>
                         Sign Up
                     </Button>
                     
-                    <Dropdown text = 'Player Info' button>    
+                    <Dropdown text = 'Player Info' button style = {{border: '1px solid #1f2e2e'}}>    
                         <Dropdown.Menu>
                         <Menu.Item as='a' active>
                             <NavLink to = '/ '>Home</NavLink>
@@ -49,7 +51,7 @@ const NavBar = () => {
                         </Menu.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    <Button style = {{backgroundColor: '#ffcc00'}}>
+                    <Button style = {{backgroundColor: '#ffcc00', border: '1px solid #1f2e2e'}}>
                         <NavLink to = '/about' >About</NavLink>
                     </Button>
 
