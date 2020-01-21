@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import World from "../features/world";
+import World from "../../features/world";
 
-import AboutPage from '../about_temp/AboutPage'
+import AboutPage from '../about/AboutPage'
 import LandingPage from '../landing/LandingPage';
 
 import {Route, NavLink, Switch} from 'react-router-dom';
@@ -13,7 +13,7 @@ import vines from '../content/vines.jpg';
 import {
     BannerDiv,
     NavDiv
-} from '../styledComp/StyledComp';
+} from '../../styledComp/StyledComp';
 
 
 const NavBar = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, Image, Segment} from 'semantic-ui-react';
-import pic from '../about_temp/kittyShark.jpg';
+import pic from './kittyShark.jpg';
 
 const Contrib = () => {
     return (
