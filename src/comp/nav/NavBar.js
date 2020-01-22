@@ -50,7 +50,9 @@ const NavBar = () => {
                     :
 
                         <div>
-                            <Button style = {{backgroundColor: '#00b377', border: '1px solid #b3cccc'}}>
+                            <Button style = {{backgroundColor: '#00b377', border: '1px solid #b3cccc'}}
+
+                            >
                             Log in
                             </Button>
                             <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em', marginRight: '5.5em', 
@@ -65,12 +67,12 @@ const NavBar = () => {
 
                     <Dropdown text = 'Player Info' button style = {{border: '1px solid #b3cccc'}}>    
                         <Dropdown.Menu>
-                        <Menu.Item as='a' active>
+                        <Menu.Item active>
                             <NavLink to = '/'>Home</NavLink>
                         
                         </Menu.Item>
-                        <Menu.Item as='a'>Active Players</Menu.Item>
-                        <Menu.Item as='a'>All Players</Menu.Item>
+                        <Menu.Item> Active Players</Menu.Item>
+                        <Menu.Item> All Players</Menu.Item>
                         <Menu.Item position='right'>
                         </Menu.Item>
                         </Dropdown.Menu>
