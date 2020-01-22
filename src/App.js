@@ -18,6 +18,7 @@ const App = () => {
             <MainDiv>
 
             </MainDiv>
+            {/* <World /> */}
         </div>
   );
 }

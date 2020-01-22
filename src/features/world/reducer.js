@@ -1,18 +1,17 @@
 const initialState = {
-    tiles: []
+    room: {},
   };
   
-  const mapReducer = (state = initialState, action) => {
+  const playerReducer = (state = initialState, action) => {
     switch (action.type) {
-      case "ADD_TILES":
+      case "UPDATE_ROOM":
         return {
           ...action.payload
         };
-        
       default:
         return state;
     }
   };
   
-  export default mapReducer;
+  export default playerReducer;
   

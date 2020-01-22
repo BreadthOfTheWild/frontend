@@ -1,8 +1,9 @@
 import store from "../../config/store";
+import { authAxios } from '../../config/requests';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from "../../config/constants";
 
 // Logic For Character Movment
-export default function handleMovement(player) {
+export default function handleMovement(player, callback) {
 
   // Prevents Character From Moving Off Of the Map
   function observeBoundries(oldPos, newPos) {
@@ -16,7 +17,7 @@ export default function handleMovement(player) {
 
     const y = newPos[1] / SPRITE_SIZE
     const x = newPos[0] / SPRITE_SIZE
-   
+
     const nextTile = tiles[y][x]
 
     return nextTile.value < 5
@@ -25,7 +26,7 @@ export default function handleMovement(player) {
   // Dispatches Movement Data and Iterates Walk Animation via walkIndex
   function dispatchMove(direction, newPos) {
     const walkIndex = getWalkIndex()
-
+   
     store.dispatch({
       type: "MOVE_PLAYER",
       payload: {
@@ -76,6 +77,86 @@ export default function handleMovement(player) {
     return walkIndex >= 7 ? 0 : walkIndex + 1
   }
 
+  // Transitions Sprite To Opposite Side Of Board
+  function transition(oldPos, direction) {
+    const dir = direction[0].toLowerCase();
+
+    if(direction === 'WEST' || direction === 'EAST') {
+
+      if(!oldPos[0] > 0) {
+        
+        authAxios().post("https://djungle-maze.herokuapp.com/api/adv/move", { direction: dir })
+                   .then(res => {
+                     console.log(res)
+
+                     if(res.data.error_msg.length === 0) {
+                      store.dispatch({ type: "UPDATE_ROOM", payload: res.data });
+                      callback(res.data) 
+                     } else {
+                       console.log(res.data.error_msg)
+                     }
+
+                   })
+                   .catch(err => console.log(err));
+
+        return [ 760, oldPos[1] ]
+      } 
+      else if(!oldPos[0] < MAP_WIDTH - SPRITE_SIZE) {
+
+        authAxios().post("https://djungle-maze.herokuapp.com/api/adv/move", { direction: dir })
+                    .then(res => {
+                      console.log(res)
+                      if(res.data.error_msg.length === 0) {
+                        store.dispatch({ type: "UPDATE_ROOM", payload: res.data });
+                        callback(res.data) 
+                      } else {
+                        console.log(res.data.error_msg)
+                      }
+                    })
+                    .catch(err => console.log(err));
+
+       return [ 0, oldPos[1] ]
+      }
+
+    } else {
+
+      if(!oldPos[1] > 0) {
+
+        authAxios().post("https://djungle-maze.herokuapp.com/api/adv/move", { direction: dir })
+                  .then(res => {
+                    console.log(res)
+
+                    if(res.data.error_msg.length === 0) {
+                      store.dispatch({ type: "UPDATE_ROOM", payload: res.data });
+                      callback(res.data) 
+                     } else {
+                       console.log(res.data.error_msg)
+                     }
+                  })
+                  .catch(err => console.log(err));
+
+        return [ oldPos[0], 360 ]
+      } 
+      else if(!oldPos[1] < MAP_HEIGHT - SPRITE_SIZE) {
+
+        authAxios().post("https://djungle-maze.herokuapp.com/api/adv/move", { direction: dir })
+                  .then(res => {
+                    console.log(res)
+
+                    if(res.data.error_msg.length === 0) {
+                      store.dispatch({ type: "UPDATE_ROOM", payload: res.data });
+                      callback(res.data) 
+                    } else {
+                       console.log(res.data.error_msg)
+                    }
+                  })
+                  .catch(err => console.log(err));
+
+       return [ oldPos[0], 0 ]
+      }
+    }
+  }
+
   // Attempts To Move Character
   function attemptMove(direction) {
     const oldPos = store.getState().player.position;
@@ -85,6 +166,11 @@ export default function handleMovement(player) {
     if(observeBoundries(oldPos, newPos) && observeSolidObjects(oldPos, newPos)) {
       // Dispatch Move To Redux Store
       dispatchMove(direction, newPos)
+
+    } else if(!observeBoundries(oldPos, newPos)) {
+      const transitionPos = transition(oldPos, direction);
+
+      dispatchMove(direction, transitionPos)
     }
   }
 

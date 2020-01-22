@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import walkSprite from "./player_walk.png";
 import handleMovement from "./movement";
 
-const Player = () => {
+const Player = props => {
   // Location of Character On Map
   const position = useSelector(state => state.player.position)
   // Sprite Location on Sprite Sheet PNG
@@ -12,7 +12,7 @@ const Player = () => {
 
   useEffect(() => {
     // Logic In ./movement.js
-    handleMovement()
+    handleMovement(null, props.setRoom)
   }, []);
 
   return (
