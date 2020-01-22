@@ -45,8 +45,10 @@ const MainDiv = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
+    
 `;
 
+// box-sizing: content-box;
 
 // anchor requires some extra work!!! to implement, no native support
 // const Atag = style.a`

@@ -16,9 +16,9 @@ const App = () => {
         <div style = {{width: '90%', margin: '0 auto'}}>
             <NavBar />
             <MainDiv>
-
             </MainDiv>
-            {/* <World /> */}
+            <World />
+            
         </div>
   );
 }
