@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import World from "./features/world";
-
+import {Route} from 'react-router-dom';
 import NavBar from './comp/nav/NavBar';
 
 import {
@@ -14,13 +14,17 @@ const App = () => {
   
     return (
         <div style = {{width: '90%', margin: '0 auto'}}>
-            <NavBar />
-            <MainDiv>
-            </MainDiv>
-            <World />
-            
+                <Route exact path='/' render = { (props) => 
+                    <NavBar
+                        {...props} 
+                    /> }
+                /> 
+                <Route path='/game' component={World} />
+                <Route exact path='/' component={MainDiv} />
+                        
         </div>
   );
 }
 
 export default App;
+
