@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import World from "../../features/world";
 
 import AboutPage from '../about/AboutPage'
@@ -18,6 +18,16 @@ import {
 
 const NavBar = () => {
     const [fixed, setFixedMenu] = useState(true);
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    let userName = 'testuser'
+
+
+    useEffect(() => {
+        localStorage.setItem('user', JSON.stringify(userName))
+    }, []);
+
+
 
     return (
         <div>
@@ -33,14 +43,26 @@ const NavBar = () => {
             >
                 <BannerDiv> Djungle Maze</BannerDiv>
                 <NavDiv>
-                    <Button style = {{backgroundColor: '#00b377', border: '1px solid #b3cccc'}}>
-                        Log in
-                    </Button>
-                    <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em', marginRight: '5.5em', 
-                        border: '1px solid #b3cccc' }}>
-                        Sign Up
-                    </Button>
-                    
+
+                {loggedIn 
+                    ?
+                        null
+                    :
+
+                        <div>
+                            <Button style = {{backgroundColor: '#00b377', border: '1px solid #b3cccc'}}>
+                            Log in
+                            </Button>
+                            <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em', marginRight: '5.5em', 
+                                border: '1px solid #b3cccc' }}>
+                                Sign Up
+                            </Button>                        
+                        </div>
+                
+                
+                
+                }
+
                     <Dropdown text = 'Player Info' button style = {{border: '1px solid #b3cccc'}}>    
                         <Dropdown.Menu>
                         <Menu.Item as='a' active>
