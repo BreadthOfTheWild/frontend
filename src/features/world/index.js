@@ -16,6 +16,7 @@ const World = (props) => {
         width: "800px",
         height: "400px",
         margin: "20px auto",
+        boxSizing: "content-box",    // needed to resolve overflow with Semantic UI React
       }}
     >
       <Map />
