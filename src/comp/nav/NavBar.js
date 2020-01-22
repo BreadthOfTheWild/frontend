@@ -69,7 +69,7 @@ const NavBar = () => {
                                     <Input
                                         prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                         name = 'firstName'
-                                        placeholder = 'first name'
+                                        placeholder = 'user name'
                                         value = {values.userName}
                                         onChange = {handleChange}
                                         size = 'small' 
