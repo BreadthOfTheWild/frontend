@@ -88,8 +88,14 @@ export default function handleMovement(player, callback) {
         authAxios().post("https://djungle-maze.herokuapp.com/api/adv/move", { direction: dir })
                    .then(res => {
                      console.log(res)
-                     store.dispatch({ type: "UPDATE_ROOM", payload: res.data });
-                     callback(res.data)
+
+                     if(res.data.error_msg.length === 0) {
+                      store.dispatch({ type: "UPDATE_ROOM", payload: res.data });
+                      callback(res.data) 
+                     } else {
+                       console.log(res.data.error_msg)
+                     }
+
                    })
                    .catch(err => console.log(err));
 
@@ -100,8 +106,12 @@ export default function handleMovement(player, callback) {
         authAxios().post("https://djungle-maze.herokuapp.com/api/adv/move", { direction: dir })
                     .then(res => {
                       console.log(res)
-                      store.dispatch({ type: "UPDATE_ROOM", payload: res.data });
-                      callback(res.data)
+                      if(res.data.error_msg.length === 0) {
+                        store.dispatch({ type: "UPDATE_ROOM", payload: res.data });
+                        callback(res.data) 
+                      } else {
+                        console.log(res.data.error_msg)
+                      }
                     })
                     .catch(err => console.log(err));
 
@@ -115,8 +125,13 @@ export default function handleMovement(player, callback) {
         authAxios().post("https://djungle-maze.herokuapp.com/api/adv/move", { direction: dir })
                   .then(res => {
                     console.log(res)
-                    store.dispatch({ type: "UPDATE_ROOM", payload: res.data });
-                    callback(res.data)
+
+                    if(res.data.error_msg.length === 0) {
+                      store.dispatch({ type: "UPDATE_ROOM", payload: res.data });
+                      callback(res.data) 
+                     } else {
+                       console.log(res.data.error_msg)
+                     }
                   })
                   .catch(err => console.log(err));
 
@@ -127,8 +142,13 @@ export default function handleMovement(player, callback) {
         authAxios().post("https://djungle-maze.herokuapp.com/api/adv/move", { direction: dir })
                   .then(res => {
                     console.log(res)
-                    store.dispatch({ type: "UPDATE_ROOM", payload: res.data });
-                    callback(res.data)
+
+                    if(res.data.error_msg.length === 0) {
+                      store.dispatch({ type: "UPDATE_ROOM", payload: res.data });
+                      callback(res.data) 
+                    } else {
+                       console.log(res.data.error_msg)
+                    }
                   })
                   .catch(err => console.log(err));
 
