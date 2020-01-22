@@ -36,7 +36,7 @@ const Contrib = () => {
 
 const AboutTemp = () => {
     return (
-        <div style = {{display: "flex"}}>
+        <div style = {{display: "flex", marginTop: '150px'}}>
             <Segment style = {{margin: "5px"}}>
                 <Segment.Group horizontal>
                     <Card.Group>

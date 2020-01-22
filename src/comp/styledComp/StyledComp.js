@@ -14,7 +14,7 @@ const BannerDiv = styled.div`
     text-shadow: -3.5px -3.5px  #DDD, 3.5px -3.5px  #DDD, -3.5px 3.5px  #DDD, 3.5px 3.5px  #DDD;
     width: 50%;
     display: flex;
-    font-size: 50px;
+    font-size: 60px;
     padding: 30px;
     text-align: center;
     justify-content: center;
@@ -32,7 +32,7 @@ const NavDiv = styled.div`
 `;
 
 const MainDiv = styled.div`
-    marginTop: 70px;
+    marginTop: 350px;
     background-image: url(${jungle});
     background-position: center;
     background-size: cover;
@@ -48,11 +48,18 @@ const MainDiv = styled.div`
 `;
 
 
+// anchor requires some extra work!!! to implement, no native support
+// const Atag = style.a`
+//     color: ghostwhite;
+//     padding: 0 20px;
+
+// `
 
 
 export {
     BannerDiv,
     NavDiv,
-    MainDiv
+    MainDiv,
+
 
 };

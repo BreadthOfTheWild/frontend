@@ -3,29 +3,46 @@ import World from "../../features/world";
 
 import AboutPage from '../about/AboutPage'
 import LandingPage from '../landing/LandingPage';
-
+import {useForm} from '../customHooks/useForm';  // use { } when there is no default export
 import {Route, NavLink, Switch} from 'react-router-dom';
-import {Button, Dropdown, Label, Menu, Segment} from 'semantic-ui-react';
-import './nav.css';
-import scales from '../content/scales.jpg';
+import {Dropdown, Label, Menu, Segment} from 'semantic-ui-react';
+import {Button, Checkbox, Form, Icon, Input} from 'antd';
+
+// import './nav.css';
+// import scales from '../content/scales.jpg';
 import vines from '../content/vines.jpg';
 
 import {
     BannerDiv,
-    NavDiv
+    NavDiv,
+
 } from '../styledComp/StyledComp';
 
 
 const NavBar = () => {
     const [fixed, setFixedMenu] = useState(true);
-    const [loggedIn, setLoggedIn] = useState(false);
+    
+    const [values, handleChange] = useForm({username: '', password: ''});
+    const [showLogin, setShowLogin] = useState(false);
 
-    let userName = 'testuser'
+    let userName = 'testuser';
 
 
     useEffect(() => {
         localStorage.setItem('user', JSON.stringify(userName))
     }, []);
+
+    const loginHandler = () => {
+        setShowLogin(true);
+
+
+    }
+
+    const handleSubmit = (e) => {
+        // e.preventDefault();
+
+
+    }
 
 
 
@@ -44,25 +61,58 @@ const NavBar = () => {
                 <BannerDiv> Djungle Maze</BannerDiv>
                 <NavDiv>
 
-                {loggedIn 
+                {showLogin 
                     ?
-                        null
+                        <div style = {{width: '80%', margin: '0 auto'}} >
+                            <Form onSubmit = {handleSubmit()}>
+                                <Form.Item  style = {{marginBottom: '2px'}}>
+                                    <Input
+                                        prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                        name = 'firstName'
+                                        placeholder = 'first name'
+                                        value = {values.userName}
+                                        onChange = {handleChange}
+                                        size = 'small' 
+                                        style = {{width: '80%', marginBottom: '0px'}}   
+                                    />
+                                </Form.Item>
+                                <Form.Item style = {{marginBottom: '2px'}}>
+                                    <Input.Password
+                                        prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} 
+                                        type = 'password'
+                                        name = 'password'
+                                        placeholder = 'password'
+                                        value = {values.password}
+                                        onChange = {handleChange}
+                                        size = 'small'  
+                                        style = {{width: '80%'}}   
+                                    /> 
+                                </Form.Item>
+                                <Form.Item>
+                                    
+                     
+                                    <Button type="primary" htmlType="submit" className="login-form-button">
+                                    Log in
+                                    </Button>
+                                    <div>
+                                    <span style = {{padding: '0 20px'}}>  <a style = {{color: 'ghostwhite'}} href="">register now!</a>   </span>  
+                                    <span> <a style = {{color: 'ghostwhite'}} className="login-form-forgot" href=""> Forgot password </a></span>  
+                                    
+                                    </div>
+                              </Form.Item>                                
+                            </Form>
+                        </div>
                     :
 
                         <div>
-                            <Button style = {{backgroundColor: '#00b377', border: '1px solid #b3cccc'}}
-
+                            <Button style = {{backgroundColor: '#00b377', border: '1px solid #b3cccc', marginRight: '10px'}}
+                                onClick = {() => loginHandler()}
                             >
-                            Log in
+                            Log in/Sign up
                             </Button>
-                            <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em', marginRight: '5.5em', 
-                                border: '1px solid #b3cccc' }}>
-                                Sign Up
-                            </Button>                        
+                       
                         </div>
-                
-                
-                
+                               
                 }
 
                     <Dropdown text = 'Player Info' button style = {{border: '1px solid #b3cccc'}}>    

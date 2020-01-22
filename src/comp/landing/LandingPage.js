@@ -5,7 +5,7 @@ import game from '../content/Landing_GamePlay.png';
 
 const LandingTemp = (props) => {
     return (
-            <div style = {{padding: '20px', color: 'ghostwhite', display: 'flex', flexDirection: 'column', marginTop: '70px'}}>
+            <div style = {{padding: '20px', color: 'ghostwhite', display: 'flex', flexDirection: 'column', marginTop: '150px'}}>
                 <h3> {props.landing_temp_title}</h3>
                     <p >
                     Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. 
