@@ -95,7 +95,7 @@ const NavBar = () => {
                                     Log in
                                     </Button>
                                     <div>
-                                    <span style = {{padding: '0 20px'}}>  <a style = {{color: 'ghostwhite'}} href="">register now!</a>   </span>  
+                                    <span style = {{paddingRight: '20px'}}>  <a style = {{color: 'ghostwhite'}} href="">register now!</a>   </span>  
                                     <span> <a style = {{color: 'ghostwhite'}} className="login-form-forgot" href=""> Forgot password </a></span>  
                                     
                                     </div>

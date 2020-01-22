@@ -12,7 +12,7 @@ const BannerDiv = styled.div`
     font-family: climbing_plantregular;
     font-family: 'Eater', cursive;
     text-shadow: -3.5px -3.5px  #DDD, 3.5px -3.5px  #DDD, -3.5px 3.5px  #DDD, 3.5px 3.5px  #DDD;
-    width: 50%;
+    width: 70%;
     display: flex;
     font-size: 60px;
     padding: 30px;
