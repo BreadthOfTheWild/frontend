@@ -11,6 +11,7 @@ import {Button, Checkbox, Form, Icon, Input} from 'antd';
 // import './nav.css';
 // import scales from '../content/scales.jpg';
 import vines from '../content/vines.jpg';
+import axios from 'axios';
 
 import {
     BannerDiv,
@@ -19,7 +20,7 @@ import {
 } from '../styledComp/StyledComp';
 
 
-const NavBar = () => {
+const NavBar = (props) => {
     const [fixed, setFixedMenu] = useState(true);
     
     const [values, handleChange] = useForm({username: '', password: ''});
@@ -39,8 +40,22 @@ const NavBar = () => {
     }
 
     const handleSubmit = (e) => {
-        // e.preventDefault();
 
+        const getAxios = async () => {
+            try{
+                const resp = await  axios.post(`https://djungle-maze.herokuapp.com/api/login/`, values);
+                const data = await resp.data;
+                console.log('data >>>', data);
+                localStorage.setItem('token', `Token ${data.key}`);
+                props.history.push("/game");    
+
+            } catch (err) {
+                // setState({errorRight: err.toString()})
+                console.log('err >> ', err);
+            }
+        }
+
+        getAxios()
 
     }
 
@@ -50,10 +65,10 @@ const NavBar = () => {
         <div>
             
             <Menu
-                fixed={fixed ? 'top' : null}
-                inverted={!fixed}
-                pointing={!fixed}
-                secondary={!fixed}
+                // fixed={fixed ? 'top' : null}
+                // inverted={!fixed}
+                // pointing={!fixed}
+                // secondary={!fixed}
                 size='large'
                 position = 'right'
                 style = {{backgroundImage: `url(${vines})`, border: '2px solid #b3cccc'}}
@@ -68,9 +83,9 @@ const NavBar = () => {
                                 <Form.Item  style = {{marginBottom: '2px'}}>
                                     <Input
                                         prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                        name = 'firstName'
+                                        name = 'username'
                                         placeholder = 'first name'
-                                        value = {values.userName}
+                                        value = {values.username}
                                         onChange = {handleChange}
                                         size = 'small' 
                                         style = {{width: '80%', marginBottom: '0px'}}   
@@ -149,18 +164,7 @@ const NavBar = () => {
                     aboutProp = {` the About Page`} 
                 />}
             />
-
-        {/*    
-            <Route
-                exact path = 'login' 
-                render = { (props) => 
-                    <Login 
-                    {...props} 
-
-                    LoginProp = {` the Login Page`} 
-                    />}
-            />
-        */}            
+         
             <Route
                 exact path = '/world' 
                 render = { (props) => 
