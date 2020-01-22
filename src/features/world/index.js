@@ -34,6 +34,7 @@ const World = (props) => {
                 width: "800px",
                 height: "400px",
                 margin: "20px auto",
+                boxSizing: "border-box",
               }}
             >
               <Map />

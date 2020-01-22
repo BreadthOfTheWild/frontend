@@ -154,7 +154,6 @@ export default function handleMovement(player, callback) {
 
        return [ oldPos[0], 0 ]
       }
-
     }
   }
 
