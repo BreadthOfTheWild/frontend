@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Map from "../map";
 import Player from "../player";
+import Room from '../room/room';
+
 import store from '../../config/store';
 
 import { authAxios } from '../../config/requests';
@@ -39,6 +41,8 @@ const World = (props) => {
             >
               <Map />
               <Player setRoom={setRoom} />
+
+              <Room />
             </div> 
             : <div></div>
   );
