@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import World from "./features/world";
 import {Route} from 'react-router-dom';
 import NavBar from './comp/nav/NavBar';
+import AboutPage from './comp/about/AboutPage';
 
 import {
     MainDiv
@@ -21,6 +22,8 @@ const App = () => {
                 /> 
                 <Route path='/game' component={World} />
                 <Route exact path='/' component={MainDiv} />
+                <Route exact path='/about' component={AboutPage} />
+
                         
         </div>
   );

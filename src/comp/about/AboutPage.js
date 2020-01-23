@@ -34,7 +34,7 @@ const Contrib = () => {
 
 // <Card.Group centered itemsPerRow={5}
 
-const AboutTemp = () => {
+const AboutPage = () => {
     return (
         <div style = {{display: "flex", marginTop: '150px'}}>
             <Segment style = {{margin: "5px"}}>
@@ -64,4 +64,4 @@ const AboutTemp = () => {
 
 }
 
-export default AboutTemp;
+export default AboutPage;

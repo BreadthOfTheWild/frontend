@@ -52,7 +52,7 @@ const NavBar = (props) => {
 
         const login = async () => {
             try{
-                const resp = await  axios.post(`https://djungle-maze.herokuapp.com/api/login/`, regValues);
+                const resp = await  axios.post(`https://djungle-maze.herokuapp.com/api/login/`, values);
                 const data = await resp.data;
                 console.log('data >>>', data);
                 localStorage.setItem('token', `Token ${data.key}`);
