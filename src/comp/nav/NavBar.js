@@ -48,6 +48,7 @@ const NavBar = (props) => {
     
 
     const handleLogin = (e) => {
+        e.preventDefault();
 
         const login = async () => {
             try{
