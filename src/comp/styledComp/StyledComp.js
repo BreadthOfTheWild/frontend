@@ -7,15 +7,17 @@ import jungle from '../content/background_jungle_01.png';
 // text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 
 const BannerDiv = styled.div`  
+    border: 1px solid blue;
     color: #386600;
     fontWeight: bold;
     font-family: climbing_plantregular;
     font-family: 'Eater', cursive;
     text-shadow: -3.5px -3.5px  #DDD, 3.5px -3.5px  #DDD, -3.5px 3.5px  #DDD, 3.5px 3.5px  #DDD;
-    width: 70%;
+    width: 60%;
+    height: 90px;
     display: flex;
     font-size: 60px;
-    padding: 30px;
+    padding: 50px;
     text-align: center;
     justify-content: center;
     align-items: center;
