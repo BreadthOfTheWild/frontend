@@ -24,26 +24,34 @@ const NavBar = (props) => {
     const [fixed, setFixedMenu] = useState(true);
     
     const [values, handleChange] = useForm({username: '', password: ''});
+    const [regValues, handleChange2] = useForm({username: '', password1: '', password2: ''});
+    const [showLogReg, setShowLogReg] = useState(true)
     const [showLogin, setShowLogin] = useState(false);
+    const [showRegister, setShowRegister] = useState(false);
 
-    let userName = 'testuser';
+    // let userName = 'testuser';
 
 
     useEffect(() => {
-        localStorage.setItem('user', JSON.stringify(userName))
+        // localStorage.setItem('user', JSON.stringify(userName))
     }, []);
 
     const loginHandler = () => {
+        setShowLogReg(false);
         setShowLogin(true);
-
-
     }
 
-    const handleSubmit = (e) => {
+    const registerHandler = () => {
+        setShowLogReg(false);
+        // setShowLogin(true);
+    }
+    
 
-        const getAxios = async () => {
+    const handleLogin = (e) => {
+
+        const login = async () => {
             try{
-                const resp = await  axios.post(`https://djungle-maze.herokuapp.com/api/login/`, values);
+                const resp = await  axios.post(`https://djungle-maze.herokuapp.com/api/login/`, regValues);
                 const data = await resp.data;
                 console.log('data >>>', data);
                 localStorage.setItem('token', `Token ${data.key}`);
@@ -54,21 +62,34 @@ const NavBar = (props) => {
                 console.log('err >> ', err);
             }
         }
-
-        getAxios()
-
+        login();
     }
 
+    const handleRegister = (e) => {
+        e.preventDefault();
+        const register = async () => {
+            try{
+                const resp = await  axios.post(`https://djungle-maze.herokuapp.com/api/registration/`, regValues);
+                const data = await resp.data;
+                console.log('data >>>', data);
+                localStorage.setItem('token', `Token ${data.key}`);
+                props.history.push("/game");    
+
+            } catch (err) {
+                // setState({errorRight: err.toString()})
+                console.log('err >> ', err);
+            }
+        }
+        register();
+
+
+    }
 
 
     return (
         <div>
             
             <Menu
-                // fixed={fixed ? 'top' : null}
-                // inverted={!fixed}
-                // pointing={!fixed}
-                // secondary={!fixed}
                 size='large'
                 position = 'right'
                 style = {{backgroundImage: `url(${vines})`, border: '2px solid #b3cccc'}}
@@ -76,58 +97,106 @@ const NavBar = (props) => {
                 <BannerDiv> Djungle Maze</BannerDiv>
                 <NavDiv>
 
-                {showLogin 
+                {showLogReg 
                     ?
-                        <div style = {{width: '80%', margin: '0 auto'}} >
-                            <Form onSubmit = {handleSubmit()}>
-                                <Form.Item  style = {{marginBottom: '2px'}}>
-                                    <Input
-                                        prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                        name = 'username'
-                                        placeholder = 'first name'
-                                        value = {values.username}
-                                        onChange = {handleChange}
-                                        size = 'small' 
-                                        style = {{width: '80%', marginBottom: '0px'}}   
-                                    />
-                                </Form.Item>
-                                <Form.Item style = {{marginBottom: '2px'}}>
-                                    <Input.Password
-                                        prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} 
-                                        type = 'password'
-                                        name = 'password'
-                                        placeholder = 'password'
-                                        value = {values.password}
-                                        onChange = {handleChange}
-                                        size = 'small'  
-                                        style = {{width: '80%'}}   
-                                    /> 
-                                </Form.Item>
-                                <Form.Item>
-                                    
-                     
-                                    <Button type="primary" htmlType="submit" className="login-form-button">
-                                    Log in
-                                    </Button>
-                                    <div>
-                                    <span style = {{paddingRight: '20px'}}>  <a style = {{color: 'ghostwhite'}} href="">register now!</a>   </span>  
-                                    <span> <a style = {{color: 'ghostwhite'}} className="login-form-forgot" href=""> Forgot password </a></span>  
-                                    
-                                    </div>
-                              </Form.Item>                                
-                            </Form>
-                        </div>
-                    :
-
-                        <div>
+                        <div style = {{border: '1px solid red' ,display: 'flex', flexDirection: 'column'}}>
                             <Button style = {{backgroundColor: '#00b377', border: '1px solid #b3cccc', marginRight: '10px'}}
                                 onClick = {() => loginHandler()}
                             >
-                            Log in/Sign up
+                                Log in
                             </Button>
-                       
+                            <Button style = {{backgroundColor: '#00b377', border: '1px solid #b3cccc', marginRight: '10px'}}
+                                onClick = {() => registerHandler()}
+                            >
+                                Register
+                            </Button>
                         </div>
-                               
+
+                    :
+                        <div>
+                        {  showLogin
+                            ?
+                                <div style = {{width: '80%', margin: '0 auto'}} >
+                                    <Form onSubmit = {e => handleLogin(e)}>
+                                        <Form.Item  style = {{marginBottom: '2px'}}>
+                                            <Input
+                                                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                                name = 'username'
+                                                placeholder = 'username'
+                                                value = {values.username}
+                                                onChange = {handleChange}
+                                                size = 'small' 
+                                                style = {{width: '80%', marginBottom: '0px'}}   
+                                            />
+                                        </Form.Item>
+                                        <Form.Item style = {{marginBottom: '2px'}}>
+                                            <Input.Password
+                                                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} 
+                                                type = 'password'
+                                                name = 'password'
+                                                placeholder = 'password'
+                                                value = {values.password}
+                                                onChange = {handleChange}
+                                                size = 'small'  
+                                                style = {{width: '80%'}}   
+                                            /> 
+                                        </Form.Item>
+                                        <Form.Item>                     
+                                            <Button type="primary" htmlType="submit" className="login-form-button">
+                                                Log in
+                                            </Button>
+                                        </Form.Item>                                
+                                    </Form>
+                                </div>    
+                            :
+                                <div style = {{width: '100%', margin: '0 auto'}} >
+                                    <Form onSubmit = {e => handleRegister(e)}>
+                                        <Form.Item  style = {{marginBottom: '2px'}}>
+                                            <Input
+                                                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                                name = 'username'
+                                                placeholder = 'username'
+                                                value = {regValues.username}
+                                                onChange = {handleChange2}
+                                                size = 'small' 
+                                                style = {{width: '80%', marginBottom: '0px'}}   
+                                            />
+                                        </Form.Item>
+                                        <Form.Item style = {{marginBottom: '2px'}}>
+                                            <Input.Password
+                                                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} 
+                                                type = 'password'
+                                                name = 'password1'
+                                                placeholder = 'password'
+                                                value = {regValues.password1}
+                                                onChange = {handleChange2}
+                                                size = 'small'  
+                                                style = {{width: '80%'}}   
+                                            /> 
+                                        </Form.Item>
+                                        <Form.Item style = {{marginBottom: '2px'}}>
+                                            <Input.Password
+                                                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} 
+                                                type = 'password'
+                                                name = 'password2'
+                                                placeholder = 'password2'
+                                                value = {regValues.password2}
+                                                onChange = {handleChange2}
+                                                size = 'small'  
+                                                style = {{width: '80%'}}   
+                                            /> 
+                                        </Form.Item>
+                                        <Form.Item>                     
+                                            <Button htmlType="submit">
+                                                Register
+                                            </Button>
+                                        </Form.Item>                                
+                                    </Form>
+                                </div>
+                        }
+                        </div>
+  
+
                 }
 
                     <Dropdown text = 'Player Info' button style = {{border: '1px solid #b3cccc'}}>    
