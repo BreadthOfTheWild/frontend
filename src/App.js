@@ -15,7 +15,7 @@ const App = () => {
   
     return (
         <div style = {{width: '90%', margin: '0 auto'}}>
-                <Route exact path='/' render = { (props) => 
+                <Route path='/' render = { (props) => 
                     <NavBar
                         {...props} 
                     /> }
