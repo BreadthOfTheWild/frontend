@@ -7,7 +7,6 @@ import jungle from '../content/background_jungle_01.png';
 // text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 
 const BannerDiv = styled.div`  
-    border: 1px solid blue;
     color: #386600;
     fontWeight: bold;
     font-family: climbing_plantregular;
