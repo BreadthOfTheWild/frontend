@@ -9,7 +9,6 @@ import jungle from '../content/background_jungle_01.png';
 const BannerDiv = styled.div`  
     color: #386600;
     fontWeight: bold;
-    font-family: climbing_plantregular;
     font-family: 'Eater', cursive;
     text-shadow: -3.5px -3.5px  #DDD, 3.5px -3.5px  #DDD, -3.5px 3.5px  #DDD, 3.5px 3.5px  #DDD;
     width: 60%;
@@ -20,6 +19,16 @@ const BannerDiv = styled.div`
     text-align: center;
     justify-content: center;
     align-items: center;
+`;
+
+const AboutDiv = styled(BannerDiv)`    
+    margin-top: 110px;
+    font-family: 'Griffy', cursive;
+    color: white;
+    padding: 20px;
+    text-shadow: none;
+    font-size:70px;
+    width: 100%;
 `;
 
 const NavDiv = styled.div`
@@ -63,6 +72,7 @@ export {
     BannerDiv,
     NavDiv,
     MainDiv,
+    AboutDiv,
 
 
 };
