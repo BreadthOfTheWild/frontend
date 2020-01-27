@@ -247,14 +247,7 @@ const NavBar = (props) => {
                 />}
             />
          
-            <Route
-                exact path = '/world' 
-                render = { (props) => 
-                <World 
-                    {...props} 
-                    worldProp = {` the World Page`} 
-                />}
-            />        
+        
         </div>
     )
 
