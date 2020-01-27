@@ -1,67 +1,57 @@
 import React from 'react';
-import {Card, Image, Segment} from 'semantic-ui-react';
-import pic from './kittyShark.jpg';
+import {Card, Container, Image, Label, Segment} from 'semantic-ui-react';
 
-const Contrib = () => {
+import arpitasinha from './arpitasinha.jpg';
+import benardjohnson from './bernardjohnson.jpg';
+import brettmadrid from './brettmadrid.jpg';
+import jamartorres from './jamartorres.jpg';
+import stevekutz from './stevekutz.png';
+
+import {
+    MainDiv,
+    AboutDiv,
+} from '../styledComp/StyledComp';
+
+const Contrib = (props) => {
     return (
-        <Card >
+        <Card style = {{padding: '4px', backgroundColor: '#fefcf6', border: '2px solid #009933', width: '200px'}}>
+            <Image src = {props.src} max-height = '40px'/>
             <Card.Header>
-                Header Here
+                {props.name}
             </Card.Header>
+            
             <Card.Content>
-                I am Groot. I am Groot. I am Groot. We are Groot. I am Groot. I am Groot. 
-                I am Groot. I am Groot. I am Groot. We are Groot. I am Groot. I am Groot. We are Groot. 
-                I am Groot. We are Groot. I am Groot. I am Groot. We are Groot. We are Groot. I am Groot. 
-                We are Groot. We are Groot. We are Groot. We are Groot. I am Groot.
-            </Card.Content>
-            <Card.Content>
-                Who wants mayo on a hotdog?  If we do this, how do we know it's gonna end any differently than 
-                it did before?  Alright, Heartbreaker. She's alone. This is our shot. [He turns back to where 
-                Thor was moments ago] Thor? Thor!  Remember... You have to return the stones to the exact 
-                moment you got them. Or you're gonna open up a bunch of nasty alternative realities. 
-            </Card.Content>
-            <Card.Content>
-                    <img src = {pic} alt = 'placeholder' width = '50%'/>
-            </Card.Content>        
-
+                {props.brags}
+            </Card.Content>       
         </Card>
-
-
-
     )
-
 }
 
 // <Card.Group centered itemsPerRow={5}
+// font-family: climbing_plantregular;;
+
+// text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 
 const AboutPage = () => {
     return (
-        <div style = {{display: "flex", marginTop: '150px'}}>
-            <Segment style = {{margin: "5px"}}>
-                <Segment.Group horizontal>
-                    <Card.Group>
-                        <Contrib/>
-                        <Contrib/>
-                        <Contrib/>
-                        <Contrib/>
-                        <Contrib/>    
-                    </Card.Group>
-                </Segment.Group>       
+        <MainDiv>
 
-
-            </Segment>
+                    <AboutDiv> Team Djunlge Maze </AboutDiv>
         
-        
-        
-        </div>
-        
+                    <Card.Group style = {{padding: '5px', display: "flex", marginTop: '20px', justifyContent: 'space-evenly', borderRadius: '5px'}}>
 
+                        <Contrib name = "Arpita Sinha" src = {arpitasinha} brags = "Loves Django & pipenv more than algorithms"/>
+                        <Contrib name = "Bernard Johnson" src = {benardjohnson} brags= "Makes slow computers run futuristic code"/>
+                        <Contrib name = "Brett Madrid" src = {brettmadrid} brags = "Does not let little things like pneumonia slow him down"/>
+                        <Contrib name = "Jamar Torres" src = {jamartorres} brags = "Makes Django behave as it should" />
+                        <Contrib name = "Steve Kutz" src = {stevekutz} brags = "Tries to make FE things look pretty for the BE"/>    
+                    </Card.Group>       
 
-
+        </MainDiv>
     )
-
-
-
 }
 
 export default AboutPage;
+
+
+// <h2 style = {{display: 'flex', marginTop: '120px', paddingLeft: '50px', fontFamily: 'climbing_plantregular', fontSize: '50px'}}>Team Djungle Maze</h2>
