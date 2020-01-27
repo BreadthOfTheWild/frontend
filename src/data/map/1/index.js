@@ -67,27 +67,20 @@ function generateTiles(room) {
     }
 
     populateNeightbors(tiles);
+    
+    let startCell;
 
-    let startCell = tiles[1][1]
-    generateMaze(startCell);
-
-    startCell = tiles[8][1]
-    generateMaze(startCell)
-
-    startCell = tiles[8][18]
-    generateMaze(startCell)
-
-    startCell = tiles[1][18]
-    generateMaze(startCell)
-
-    startCell = tiles[4][1]
-    generateMaze(startCell)
-
-    startCell = tiles[4][9]
-    generateMaze(startCell)
-
-    startCell = tiles[4][18]
-    generateMaze(startCell)
+    for(let i = 0; i < 9; i += 4) {
+        for(let j = 1; j < 19; j += 3) {
+            if(i === 0) {
+                startCell = tiles[i+1][j]
+                generateMaze(startCell)
+            } else {
+                startCell = tiles[i][j]
+                generateMaze(startCell)
+            }
+        }
+    }
 
     return tiles;
 }
